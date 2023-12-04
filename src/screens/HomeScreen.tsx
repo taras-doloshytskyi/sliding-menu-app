@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Modal, StyleSheet, View, Platform } from 'react-native';
 import { useDrawerStatus } from '@react-navigation/drawer';
 import { BlurView } from 'expo-blur';
 import Header from '../components/Header';
@@ -34,7 +34,7 @@ export default function Home() {
         <BottomTabs onTabPress={handleTabPress} />
       </View>
       {isDrawerOpen ? (
-        <BlurView intensity={5} style={[StyleSheet.absoluteFill, { zIndex: 1 }]} />
+        <BlurView intensity={Platform.OS === 'ios' ? 20 : 5} style={[StyleSheet.absoluteFill, { zIndex: 1 }]} />
       ) : null}
     </>
   );
